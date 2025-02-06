@@ -13,3 +13,7 @@
 ---
 
 Use LSTM predict stock price
+
+### Environment setup
+
+Please read [env-setup](https://github.com/fenghshia/stock-predict/blob/main/env-setup/README.md)
