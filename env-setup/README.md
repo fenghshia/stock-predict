@@ -15,10 +15,12 @@ python -m pip install -U "tensorflow<2.11" akshare sklearn pandas tqdm
 
 ### MacOS GPU suport
 
+Watch [here](https://developer.apple.com/metal/tensorflow-plugin/).
 
 
-[CUDA archive](https://developer.nvidia.com/cuda-toolkit-archive)
 
-[cuDNN archive](https://developer.nvidia.com/rdp/cudnn-archive)
+- [CUDA archive](https://developer.nvidia.com/cuda-toolkit-archive)
 
-[Miniconda Document](https://docs.anaconda.com/miniconda/install/)
+- [cuDNN archive](https://developer.nvidia.com/rdp/cudnn-archive)
+
+- [Miniconda Document](https://docs.anaconda.com/miniconda/install/)
