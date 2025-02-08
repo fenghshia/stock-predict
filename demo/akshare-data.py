@@ -6,7 +6,6 @@
 # @Description : Input Here
 # --*-- Author : FengHShia --*--
 import os
-import pandas as pd
 import akshare as aks
 from datetime import date
 

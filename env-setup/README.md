@@ -10,7 +10,7 @@ Caution! Tensorflow gpu support only befor v2.11 on windows. In this project use
 ```powershell
 conda create -n sp python=3.10
 conda activate sp
-python -m pip install -U "tensorflow<2.11" akshare sklearn pandas tqdm
+python -m pip install -U "tensorflow<2.11" akshare scikit-learn pandas tqdm
 ```
 
 ### MacOS GPU support
@@ -18,7 +18,7 @@ python -m pip install -U "tensorflow<2.11" akshare sklearn pandas tqdm
 ```powershell
 conda create -n sp
 conda activate sp
-python -m pip install -U tensorflow tensorflow-metal akshare
+python -m pip install -U tensorflow tensorflow-metal akshare scikit-learn
 ```
 
 - [Miniconda Document](https://docs.anaconda.com/miniconda/install/)
