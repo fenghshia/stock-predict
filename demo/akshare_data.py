@@ -1,6 +1,6 @@
 # --*-- Coding : UTF-8     --*--
 # @Project     : stock-predict
-# @File        : akshare-data.py
+# @File        : akshare_data.py
 # @Time        : 2025/2/8 下午3:00
 # @IDE         : PyCharm
 # @Description : Input Here
