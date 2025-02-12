@@ -14,7 +14,7 @@ from sklearn.preprocessing import MinMaxScaler
 from akshare_data import AkshareData as aksd
 
 
-class NormalizationAndSplit():
+class DataProcess:
 
     aksd = aksd()
     sc = MinMaxScaler(feature_range=(0, 1))
@@ -33,16 +33,16 @@ class NormalizationAndSplit():
     def train_data_orgnize(self):
         x_train_data_set = list()
         y_train_data_set = list()
-        for i in range(60, len(self.train_split)):
-            x_train_data_set.append(self.train_split[i - 60:i, 0])
+        for i in range(7, len(self.train_split)):
+            x_train_data_set.append(self.train_split[i - 7:i, 0])
             y_train_data_set.append(self.train_split[i, 0])
         return x_train_data_set, y_train_data_set
 
     def test_data_orgnize(self):
         x_test_data_set = list()
         y_test_data_set = list()
-        for i in range(60, len(self.test_split)):
-            x_test_data_set.append(self.test_split[i - 60:i, 0])
+        for i in range(7, len(self.test_split)):
+            x_test_data_set.append(self.test_split[i - 7:i, 0])
             y_test_data_set.append(self.test_split[i, 0])
         return np.array(x_test_data_set), np.array(y_test_data_set)
 
@@ -64,4 +64,4 @@ class NormalizationAndSplit():
 
 
 if __name__ == '__main__':
-    NormalizationAndSplit().data_save()
+    DataProcess().data_save()
