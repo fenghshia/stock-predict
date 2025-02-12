@@ -10,17 +10,25 @@ Caution! Tensorflow gpu support only befor v2.11 on windows. In this project use
 ```powershell
 conda create -n sp python=3.10
 conda activate sp
-python -m pip install -U "tensorflow<2.11" akshare sklearn pandas tqdm
+python -m pip install -U "tensorflow<2.11" akshare scikit-learn pandas tqdm matplotlib jupyter notebook prettytable import-ipynb
 ```
 
-### MacOS GPU suport
+### MacOS GPU support
 
-Watch [here](https://developer.apple.com/metal/tensorflow-plugin/).
+```powershell
+conda create -n sp
+conda activate sp
+python -m pip install -U tensorflow tensorflow-metal akshare scikit-learn matplotlib jupyter notebook prettytable import-ipynb
+```
 
-
+- [Miniconda Document](https://docs.anaconda.com/miniconda/install/)
 
 - [CUDA archive](https://developer.nvidia.com/cuda-toolkit-archive)
 
 - [cuDNN archive](https://developer.nvidia.com/rdp/cudnn-archive)
 
-- [Miniconda Document](https://docs.anaconda.com/miniconda/install/)
+- [MacOS GPU Support](https://developer.apple.com/metal/tensorflow-plugin/)
+
+### Dev Document
+
+- [Akshare Document](https://akshare.akfamily.xyz/)
