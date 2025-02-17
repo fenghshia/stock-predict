@@ -1,0 +1,67 @@
+import akshare as ak
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
+import pandas as pd
+
+class Stocks:
+    def __init__(self):
+        # 初始化时获取数据
+        self.date = ak.stock_us_spot_em()
+    
+    def search(self, start_column, end_column):
+        """
+        从数据框中选取指定行范围的数据。
+        
+        参数:
+            start_column (int): 起始列索引（包含）。
+            end_column (int): 结束列索引（不包含）。
+            
+        返回:
+            pandas.DataFrame: 包含指定列的数据。
+        """
+        # 确保start_column和end_column是整数
+        if not isinstance(start_column, int) or not isinstance(end_column, int):
+            raise ValueError("start_column and end_column must be integers")
+        
+        # 检查索引是否合理
+        if start_column < 0 or end_column > len(self.date.columns) or start_column >= end_column:
+            raise IndexError("Invalid column range specified.")
+        
+        # 获取指定列的数据
+        return self.date.iloc[start_column:end_column]
+    def fuzzy_search(self, search_term, column_name='名称'):
+        """
+        根据名称列的内容进行模糊搜索。
+        
+        参数:
+            search_term (str): 要搜索的术语。
+            column_name (str): 包含名称的列名，默认为'名称'。
+            
+        返回:
+            pandas.DataFrame: 包含匹配项的所有行。
+        """
+        # 检查列是否存在
+        if column_name not in self.date.columns:
+            raise KeyError(f"Column '{column_name}' does not exist in the DataFrame.")
+        
+        # 使用fuzzywuzzy进行模糊匹配
+        matches = []
+        for index, row in self.date.iterrows():
+            name = row[column_name]
+            # 计算相似度得分
+            score = fuzz.partial_ratio(search_term, name)
+            if score > 80:  # 设置一个阈值来决定匹配程度
+                matches.append(row)
+        
+        # 将匹配的结果转换为DataFrame并返回
+        return pd.DataFrame(matches)
+    
+# 返回第3至第6（不包括）行数据
+# stocks_instance = Stocks()
+# result = stocks_instance.search(3, 6)
+# print(result)
+
+# 返回用户输入的指定列数据
+# stocks_instance = Stocks()
+# result = stocks_instance.fuzzy_search('科技', column_name='名称')
+# print(result)
