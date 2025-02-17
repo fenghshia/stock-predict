@@ -44,7 +44,7 @@ class Stocks:
         if column_name not in self.date.columns:
             raise KeyError(f"Column '{column_name}' does not exist in the DataFrame.")
         
-        # 使用fuzzywuzzy进行模糊匹配
+        # 使用fuzzywuzzy进行模糊匹配 
         matches = []
         for index, row in self.date.iterrows():
             name = row[column_name]
