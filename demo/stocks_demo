@@ -56,7 +56,7 @@ class Stocks:
         # 将匹配的结果转换为DataFrame并返回
         return pd.DataFrame(matches)
     
-# 返回第3至第6（不包括）行数据
+# 返回第3至第6（不包括）行数据 
 # stocks_instance = Stocks()
 # result = stocks_instance.search(3, 6)
 # print(result)
