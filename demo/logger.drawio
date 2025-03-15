@@ -36,6 +36,11 @@
         <mxCell id="jNp-3TdlRxS_LNZfibel-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jNp-3TdlRxS_LNZfibel-10" target="jNp-3TdlRxS_LNZfibel-4">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="jNp-3TdlRxS_LNZfibel-39" value="写入" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="jNp-3TdlRxS_LNZfibel-12">
+          <mxGeometry x="-0.3" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="jNp-3TdlRxS_LNZfibel-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jNp-3TdlRxS_LNZfibel-10" target="jNp-3TdlRxS_LNZfibel-15">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
@@ -114,6 +119,9 @@
         </mxCell>
         <mxCell id="jNp-3TdlRxS_LNZfibel-33" value="Loki日志对象" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="600" y="160" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jNp-3TdlRxS_LNZfibel-38" value="Call对象" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="440" width="200" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
