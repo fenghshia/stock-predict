@@ -29,6 +29,39 @@ python -m pip install -U tensorflow tensorflow-metal akshare scikit-learn matplo
 
 - [MacOS GPU Support](https://developer.apple.com/metal/tensorflow-plugin/)
 
+### Jetson Nano with Jetpack 4.6.6
+
+1. Install CUDA
+
+```powershell
+sudo apt -y install cuda-toolkit-10-2
+```
+
+2. Install cuDNN
+
+```powershell
+sudo apt -y install nvidia-cudnn8
+```
+
+3. Install TensorRT
+
+```powershell
+sudo apt -y install nvidia-tensorrt
+```
+
+4. Install conda-forge and config
+
+```powershell
+zsh -c "$(curl https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-aarch64.sh)"
+conda create -n ai-env python=3.6
+conda activate ai-env
+conda install h5py==3.1.0
+wget -P ~/Download https://developer.download.nvidia.com/compute/redist/jp/v461/pytorch/torch-1.11.0a0+17540c5+nv22.01-cp36-cp36m-linux_aarch64.whl
+python -m pip install ~/Download/torch-1.11.0a0+17540c5+nv22.01-cp36-cp36m-linux_aarch64.whl
+```
+
+
+
 ### Dev Document
 
 - [Akshare Document](https://akshare.akfamily.xyz/)
