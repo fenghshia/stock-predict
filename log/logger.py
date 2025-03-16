@@ -1,26 +1,33 @@
 from queue import Queue
-from call_info import CallInfo
+from types import FunctionType
+from logging import getLogger
+from .call_info import CallInfo
+from logging_loki import LokiHandler
+from .log import Log
 
 
 class Logger:
 
-    main_queue = Queue()
+    handler = LokiHandler(
+        url="http://192.168.160.50:3100/loki/api/v1/push",
+        tags={"application": "stock-predict"},
+        version="2",
+    )
+    logger = getLogger("stock-predict-logger")
+    logger.addHandler(handler)
     logs_cache = dict()
+    main_queue = Queue()
 
     @classmethod
-    def log(cls, func):
-        def wrapper(*args, **kwargs):
-            call_info = kwargs.get('call_info')
+    def log(cls, func: FunctionType):
+        def wrapper(*args, call_info: CallInfo = None, **kwargs):
             if call_info is None:
                 call_info = CallInfo(func)
-            print(type(func))
-            print(dir(func))
-            print(dir(func.__code__))
-            print(func.__name__)
-            print(func.__code__.co_filename)
-            print(func.__code__.co_firstlineno)
-            print(args)
-            return func(*args, **kwargs, call_info=call_info)
+            else:
+                call_info.add(func)
+            log = Log('cache', call_info)
+            print(log.loki_log.extra)
+            return func(*args, call_info=call_info, **kwargs)
         return wrapper
 
     @classmethod
@@ -34,4 +41,4 @@ if __name__ == '__main__':
     def x(i):
         print('x')
 
-    x(87)
+    x()
