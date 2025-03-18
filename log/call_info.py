@@ -1,13 +1,23 @@
-from uuid import uuid4
+from uuid import uuid4, UUID
 from types import FunctionType
 
 
-class CallInfo:
+class EventInfo:
 
-    __req_id = None
+    exc: Exception = None
+    job_id: str = None
+
+    def __init__(self, job_id: str, exc: Exception = None):
+        self.job_id = job_id
+
+
+class CallInfo(EventInfo):
+
+    __req_id: UUID = None
     __call_chain = None
 
-    def __init__(self, func: FunctionType):
+    def __init__(self, job_id: str, func: FunctionType):
+        super().__init__(job_id)
         self.__req_id = uuid4()
         self.__call_chain = [func]
 

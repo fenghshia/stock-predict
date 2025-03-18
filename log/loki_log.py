@@ -1,19 +1,20 @@
-from .log_level import LogLevel
 from datetime import datetime
 from .call_info import CallInfo
-from logging import log
+from .log_level import LogLevel
 
 
 class LokiLog:
 
+    msg: str = None
     level: LogLevel = None
     log_date: datetime = None
     call_info: CallInfo = None
 
-    def __init__(self, level: LogLevel, call_info: CallInfo):
+    def __init__(self, level: LogLevel, call_info: CallInfo, msg: str, ):
         self.log_date = datetime.now()
         self.level = level
         self.call_info = call_info
+        self.msg = msg
 
     @property
     def extra(self):
