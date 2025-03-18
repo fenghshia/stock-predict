@@ -1,5 +1,5 @@
-from apscheduler.events import *
 from scheduler import scheduler
+from apscheduler.events import *
 
 
 def event_listener(event):

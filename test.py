@@ -14,12 +14,8 @@
 #     "Something happened",
 #     extra={"tags": {"service": "my-service"}},
 # )
-from log.logger import Logger
+from log.log_level import *
 
 
-@Logger.log
-def x(i):
-    print('x')
-
-
-x()
+print(dir(DEBUG))
+print(DEBUG.name)

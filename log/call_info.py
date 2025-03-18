@@ -1,5 +1,5 @@
-from types import FunctionType
 from uuid import uuid4
+from types import FunctionType
 
 
 class CallInfo:

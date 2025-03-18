@@ -1,9 +1,10 @@
+from .log import Log
+from .log_level import *
 from queue import Queue
 from types import FunctionType
 from logging import getLogger
 from .call_info import CallInfo
 from logging_loki import LokiHandler
-from .log import Log
 
 
 class Logger:
@@ -25,7 +26,8 @@ class Logger:
                 call_info = CallInfo(func)
             else:
                 call_info.add(func)
-            log = Log('cache', call_info)
+            log = Log('cache', call_info, "info")
+            cls.logger.log(DEBUG)
             print(log.loki_log.extra)
             return func(*args, call_info=call_info, **kwargs)
         return wrapper
