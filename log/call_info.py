@@ -9,6 +9,7 @@ class EventInfo:
 
     def __init__(self, job_id: str, exc: Exception = None):
         self.job_id = job_id
+        self.exc = exc
 
 
 class CallInfo(EventInfo):

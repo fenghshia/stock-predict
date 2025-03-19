@@ -14,8 +14,19 @@
 #     "Something happened",
 #     extra={"tags": {"service": "my-service"}},
 # )
-from log.log_level import *
+import traceback
+from log import *
+from datetime import datetime
 
 
-print(dir(DEBUG))
-print(DEBUG.name)
+@scheduler.task('date', run_date=datetime.now())
+@Logger.log
+def rais_error():
+    print(1)
+
+
+scheduler.start()
+log = Logger.main_queue.get()
+print(log.loki_log.extra)
+print(log.loki_log.msg)
+

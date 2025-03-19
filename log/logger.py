@@ -1,15 +1,16 @@
 from .log import *
-from .log_level import *
 from queue import Queue
 from types import FunctionType
 from logging import getLogger
+from .log_level import *
 from logging_loki import LokiHandler
 
 
 class Logger:
 
     handler = LokiHandler(
-        url="http://192.168.160.50:3100/loki/api/v1/push",
+        # url="http://192.168.160.50:3100/loki/api/v1/push",
+        url="http://10.11.110.56:3100/loki/api/v1/push",
         tags={"application": "stock-predict"},
         version="2",
     )
@@ -29,8 +30,6 @@ class Logger:
             else:
                 call_info.add(func)
             cls.__log(DEBUG, call_info, "Function [{}] 被调用".format(func.__name__))
-            # cls.logger.log(DEBUG)
-            # print(log.loki_log.extra)
             return func(*args, call_info=call_info, log=cls.__log, **kwargs)
         return wrapper
 

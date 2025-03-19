@@ -1,13 +1,13 @@
+import logging
 from enum import Enum
-from logging import DEBUG, INFO, WARNING, ERROR, CRITICAL
 
 
 class LogLevel(Enum):
-    DEBUG = DEBUG
-    INFO = INFO
-    WARNING = WARNING
-    ERROR = ERROR
-    CRITICAL = CRITICAL
+    DEBUG = logging.DEBUG
+    INFO = logging.INFO
+    WARNING = logging.WARNING
+    ERROR = logging.ERROR
+    CRITICAL = logging.CRITICAL
 
 
 DEBUG = LogLevel.DEBUG
