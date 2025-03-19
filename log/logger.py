@@ -44,6 +44,27 @@ class Logger:
                 Log(CACHE, level, call_info, msg)
             )
 
+    @classmethod
+    def logging(cls):
+        for i in range(cls.main_queue.qsize()):
+            log = cls.main_queue.get()
+            if log.process == LOG:
+                cls.logger.log(log.loki_log.level.value, log.loki_log.msg, extra=log.loki_log.extra)
+            elif log.process == CACHE:
+                if log.loki_log.job_id not in cls.logs_cache:
+                    cls.logs_cache[log.loki_log.job_id] = Queue()
+                cls.logs_cache[log.loki_log.job_id].put(log.loki_log)
+            elif log.process == EXTRACT:
+                if log.loki_log.job_id in cls.logs_cache:
+                    for j in range(cls.logs_cache[log.loki_log.job_id].qsize()):
+                        loki_log = cls.logs_cache[log.loki_log.job_id].get()
+                        cls.logger.log(loki_log.level.value, loki_log.msg, extra=loki_log.extra)
+                cls.logger.log(log.loki_log.level.value, log.loki_log.msg, extra=log.loki_log.extra)
+            else:
+                if log.loki_log.job_id in cls.logs_cache:
+                    cls.logs_cache[log.loki_log.job_id] = Queue()
+                cls.logger.log(log.loki_log.level.value, log.loki_log.msg, extra=log.loki_log.extra)
+
 
 class JobIDIsNone(Exception):
 

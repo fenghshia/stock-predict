@@ -16,3 +16,4 @@ from apscheduler.events import *
 
 
 scheduler.add_listener(event_listener, EVENT_JOB_EXECUTED | EVENT_JOB_ERROR)
+scheduler.add_job('logging', Logger.logging, trigger='interval', seconds=1)

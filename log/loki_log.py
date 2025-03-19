@@ -29,19 +29,18 @@ class LokiLog:
             info.update(
                 **self.call_info.call_chain,
                 req_id=self.call_info.req_id,
+                job_id=self.event_info.job_id,
                 **self.call_info.start_function,
                 **self.call_info.current_function
             )
-            return info
         elif self.event_info.exc is not None:
             info.update(
                 job_id=self.event_info.job_id,
                 traceback=''.join(traceback.format_tb(self.event_info.exc.__traceback__))
             )
-            return info
         else:
             info.update(job_id=self.event_info.job_id)
-            return info
+        return {"tags": info}
 
     @property
     def msg(self) -> str:
@@ -51,3 +50,10 @@ class LokiLog:
             return self.event_info.exc.__str__()
         else:
             return "任务 [{}] 执行完成".format(self.event_info.job_id)
+
+    @property
+    def job_id(self) -> str:
+        if self.call_info is not None:
+            return self.call_info.job_id
+        else:
+            return self.event_info.job_id

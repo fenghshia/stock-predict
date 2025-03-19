@@ -14,7 +14,7 @@
 #     "Something happened",
 #     extra={"tags": {"service": "my-service"}},
 # )
-import traceback
+import time
 from log import *
 from datetime import datetime
 
@@ -26,7 +26,9 @@ def rais_error():
 
 
 scheduler.start()
+time.sleep(1)
+print(Logger.main_queue.qsize())
 log = Logger.main_queue.get()
 print(log.loki_log.extra)
 print(log.loki_log.msg)
-
+time.sleep(3)
